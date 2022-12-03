@@ -44,36 +44,20 @@
                     <p>No dates Added</p>
                   </template>
                 </v-data-table>
+
               </v-col>
             </v-row>
+            <v-row>
+              <v-col>
+                <g-chart  :data="chartData" type="LineChart">
 
+                </g-chart>
+
+              </v-col>
+            </v-row>
           </v-container>
 
 
-        </v-card>
-
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-card>
-          <v-row>
-            <v-col>
-              <div class="pa-2">
-              <LineChartGenerator
-                  :chart-options="chartOptions"
-                  :chart-data="chartData"
-                  :chart-id="chartId"
-                  :dataset-id-key="datasetIdKey"
-                  :plugins="plugins"
-                  :css-classes="cssClasses"
-                  :styles="styles"
-                  :width="width"
-                  :height="height"
-              />
-              </div>
-            </v-col>
-          </v-row>
         </v-card>
       </v-col>
     </v-row>
@@ -81,56 +65,29 @@
 </template>
 
 <script>
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  LineElement,
-  LinearScale,
-  CategoryScale,
-  PointElement
-} from 'chart.js'
 
-import { Line as LineChartGenerator } from 'vue-chartjs/legacy'
-ChartJS.register(
-    Title,
-    Tooltip,
-    Legend,
-    LineElement,
-    LinearScale,
-    CategoryScale,
-    PointElement
-)
+import { GChart } from 'vue-google-charts/legacy'
+
 export default {
   name: 'HomeView',
-  components: {
-    LineChartGenerator
-  },
 
+  components: {
+    GChart
+  },
   data() {
     return {
-      chartData: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July'
-        ],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 39, 10, 40, 39, 80, 40]
-          }
-        ]
-      },
+      chartData: [
+        ['Year', 'Max Days', 'Your Days'],
+        ['2014', 90,  200],
+        ['2015', 90,  250],
+        ['2016', 90,  300],
+        ['2017', 90,  350]
+      ],
       chartOptions: {
-        responsive: true,
-        maintainAspectRatio: false
+        chart: {
+          title: 'Company Performance',
+          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        }
       },
 
       editedItem: {
