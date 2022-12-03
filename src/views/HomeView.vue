@@ -77,11 +77,13 @@ export default {
   data() {
     return {
       chartData: [
-        ['Year', 'Max Days', 'Your Days'],
-        ['2014', 90,  200],
-        ['2015', 90,  250],
-        ['2016', 90,  300],
-        ['2017', 90,  350]
+        ['Year', 'Your Days', 'Max Days'],
+        ['dd/mm/YYYY', 1,  90],
+        ['dd/mm/YYYY', 7,  90],
+        ['dd/mm/YYYY', 14,  90],
+        ['dd/mm/YYYY', 21,  90],
+        ['dd/mm/YYYY', 28,  90],
+        ['dd/mm/YYYY', 32,  90],
       ],
       chartOptions: {
         chart: {
